@@ -1,0 +1,74 @@
+<!--
+  CS1520 Assignment2 Bingo Card
+  Pan Liu (pal81)
+  Due date: 10/17/2020
+-->
+<!doctype html>
+<html>
+<head>
+    <title>Bingo Card</title>
+    <link rel="stylesheet" href="bingo.css">
+    <script src="bingo.js"></script>
+</head>
+<center> 
+<h2>B&nbsp;&nbsp;I&nbsp;&nbsp;N&nbsp;G&nbsp;O</h2>
+<table id = "cardtable">
+    <tr> <!--First row of the table -->
+        <td id="0">&nbsp;</td>
+        <td id="5">&nbsp;</td>
+        <td id="10">&nbsp;</td>
+        <td id="14">&nbsp;</td>
+        <td id="19">&nbsp;</td>
+    </tr>
+    <tr> <!--Second row of the table -->
+        <td id="1">&nbsp;</td>
+        <td id="6">&nbsp;</td>
+        <td id="11">&nbsp;</td>
+        <td id="15">&nbsp;</td>
+        <td id="20">&nbsp;</td>
+    </tr>
+    <tr> <!--Third row of the table -->
+        <td id="2">&nbsp;</td>
+        <td id="7">&nbsp;</td>
+        <td id="free" style="background-color:#a1fff7;">Free</td>
+        <td id="16">&nbsp;</td>
+        <td id="21">&nbsp;</td>
+    </tr>
+    <tr> <!--Fourth row of the table -->
+        <td id="3">&nbsp;</td>
+        <td id="8">&nbsp;</td>
+        <td id="12">&nbsp;</td>
+        <td id="17">&nbsp;</td>
+        <td id="22">&nbsp;</td>
+    </tr>
+    <tr> <!--Fifth row of the table -->
+        <td id="4">&nbsp;</td>
+        <td id="9">&nbsp;</td>
+        <td id="13">&nbsp;</td>
+        <td id="18">&nbsp;</td>
+        <td id="23">&nbsp;</td>
+    </tr>
+</table>
+</center>
+
+<body>
+<center> 
+<button class="button" href="bingo.html" id="randomCard" style="vertical-align:middle" onclick = "createRandomCard();"><span>New Game Random </span></button>
+<button class="button" href="bingo.html" id="specifiedCard" style="vertical-align:middle" onclick = "createSpecifiedCard();"><span>New Game Specified </span></button>
+<br>
+<button class="button" href="bingo.html" id="win" style="vertical-align:middle" onclick = "winGame();"><span>I Won </span></button>
+<button class="button" href="bingo.html" id="lose" style="vertical-align:middle" onclick = "loseGame();"><span>I Lost </span></button>
+
+<!--Score board to show the total number of wins and losses -->
+<div class="score-board">
+  <div class="player"><h4>Wins</h4>
+    <div class="score-box" id = "wins">&nbsp;</div>
+  </div>
+  <div class="player"><h4>Losses</h4>
+    <div class="score-box" id = "losses">&nbsp;</div> 
+  </div>   
+</div>
+
+</center> 
+</body>
+</html>

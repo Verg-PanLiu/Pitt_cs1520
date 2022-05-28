@@ -1,0 +1,42 @@
+<!-- ./public/index.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>First website</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='chat_style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='chat.js') }}"></script>
+  </head>
+  <body>
+<main>
+  <header>
+    <div class="user" id = "room_id">{{ number }} </div>
+    <h1 >Room ID:  </h1>
+    <div class="user" id = "user">{{ user.user_name }}</div>
+    <h1 >User Name:  </h1>
+    <a href="{{ url_for('logout', username = user.user_name) }}">Log out [{{ user.user_name }}]</a> |
+    <a href="{{ url_for('leave', username = user.user_name) }}">Leave this room </a>
+  </header>
+  {% with flashes = get_flashed_messages() %}
+         {% if flashes %}
+              <ul class="flashes">
+                  {% for message in flashes %}
+                      <li>{{ message }}
+                  {% endfor %}
+              </ul>
+         {% endif %}
+    {% endwith %}
+  <section class="chat">
+  <table id="theTable">
+
+  </table>
+  </section>
+
+  <form>
+    <input type="text" id="msg" name="msg" value="" placeholder="Say something nice" />
+    <input type="button" id="theButton" value="Send" />
+  </form>
+</main>
+    </body>
+</html>

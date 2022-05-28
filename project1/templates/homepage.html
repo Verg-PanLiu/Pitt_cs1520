@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% block title %}
+     {% if request.endpoint == 'all_event' %}
+          All Scheduled Events
+     {% else %}
+          My Events
+     {% endif %}
+{% endblock %}
+{% block body %}
+     {% if g.user %}
+          {% if request.endpoint == 'event' %}
+               <div class="event_creation">
+                   <h3>Want to create your own events? <a href="{{ url_for('event_creation') }}"> Click here</a> </h3>
+               </div>
+          {% endif %}
+     {% endif %}
+<h2>{{ self.title() }}</h2>
+     <ul class="events">
+          {% for event in events %}
+               <li>
+                   <p>
+                      <strong>Host: </strong>{{ event.host.username }}<br />
+                      <strong>Title: </strong>{{ event.title }}<br />
+                      <strong>Description: </strong>{{ event.description }}<br />
+                      <strong> From </strong>{{ event.start_date }}<strong> to </strong>{{ event.end_date }}<br/>
+                      <strong> Attendees:  </strong>{{ event.attended_by.all() }}
+                          {% if g.user %}
+                               {% if event.host.user_id == g.user.user_id %}
+                                    <form action="{{ url_for('confirm', e_id = event.event_id) }}" method="post">
+                                    <input type="submit" value="Cancel">
+                                    </form>
+                               {%else%}
+                                    <form action="{{ url_for('register_event', e_id = event.event_id) }}" method="post">
+                                    <input type="submit" value="Register">
+                                    </form>
+                               {% endif %}
+                          {% endif %}
+         {% else %}
+               <li><em>There's no event so far.</em>
+         {% endfor %}
+     </ul>
+     <br>
+{% if request.endpoint != 'all_event' %}
+     <h2> All Scheduled Events </h2>
+          <ul class="all_events">
+              {% for event in all_events %}
+              <li>
+                  <p>
+                      <strong>Host: </strong>{{ event.host.username }}<br />
+                      <strong>Title: </strong>{{ event.title }}<br />
+                      <strong>Description: </strong>{{ event.description }}<br />
+                      <strong> From </strong>{{ event.start_date }}<strong> to </strong>{{ event.end_date }}<br/>
+                      <strong> Attendees:  </strong>{{ event.attended_by.all() }}
+                          {% if event.host.user_id == g.user.user_id %}
+                              <form action="{{ url_for('confirm', e_id = event.event_id) }}" method="post">
+                              <input type="submit" value="Cancel">
+                              </form>
+                          {%else%}
+                              <form action="{{ url_for('register_event', e_id = event.event_id) }}" method="post">
+                              <input type="submit" value="Register">
+                              </form>
+                          {% endif %}
+              {% else %}
+                  <li><em>There's no event so far.</em>
+              {% endfor %}
+          </ul>
+{% endif %}
+{% endblock %}

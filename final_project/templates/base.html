@@ -1,0 +1,49 @@
+<!-- CS1520 Final Project
+Pan Liu (pal81) -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>RESTful category list with AJAJ!</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+		<script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+	</head>
+	<body>
+		<div class="page">
+			<h1>Budget Categories </h1>
+		    <a href="{{ url_for('logout') }}">Log out [{{ g.user.username }}]</a>
+            <a>Number of Categories: </a>
+            <a id="num_cat">1; </a>
+            <a>Number of Purchase: </a>
+            <a id="num_pur">0; </a>
+            <a>Current month: </a>
+            <a id="curr_month">&nbsp; </a>
+			<table id="theTable">
+			</table>
+			<h3> Add new category: </h3>
+			<form name="theFormC">
+				<dl>
+					<dt>Category Name:
+                    <dd><input type="text" id="c_name" required="required" name="CategoryName" size="30" value="{{ request.form.username }}">
+                    <dt>Limit:
+                    <dd><input type="number" id="quantity" required="required" name="Limit" size="30" min="0">
+				    <dd><input type="button" id="theButton" value="Add" />
+				</dl>
+			</form>
+            <h3> Add new purchase: </h3>
+			<form name="theFormP">
+				<dl>
+					<dt>The amount spent:
+                    <dd><input type="number" id="p_quantity" required="required" name="spent" size="30" min="0">
+                    <dt>What it was spent on:
+                    <dd><input type="text" id="p_name" required="required" name="spentOn" size="30" value="{{ request.form.username }}">
+                    <dt>The date that it was spent:
+                    <dd><input type="datetime-local" required="required" id="spent_time" name="date" size="60">
+                    <dt>The category it should be counted towards
+                    <dd><input type="text" id="spentOn" required="required" name="cat_p" size="30" value="{{ request.form.username }}">
+				    <dd><input type="button" id="theButtonP" value="Add" />
+				</dl>
+			</form>
+		</div>
+	</body>
+</html>

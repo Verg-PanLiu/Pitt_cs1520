@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block title %}chat room{% endblock %}
+{% block body %}
+    <h2>chat room</h2>
+        <div class="room_creation">
+            <h3>Want to create your own chat room? <a href="{{ url_for('room_creation', username = user.user_name) }}"> Click here</a> </h3>
+        </div>
+    <h3>Refresh the page to check chat rooms. <a href="{{ url_for('chat', username = user.user_name) }}">Refresh </a> </h3>
+    <ul class="room">
+    {% if rooms == 0 %}
+        <li><em>There's no chat room so far.</em>
+    {% else %}
+    {% for u in users %}
+        {% for rooms in u.rooms %}
+        <li>
+            <p>
+                <strong>Host: </strong> {{ u.user_name}} <br />
+                <strong>Room ID: </strong> {{ rooms }} <br />
+                <a href="{{ url_for('enter', username = user.user_name, number = rooms) }}">Enter the chatroom</a>
+            {% if user.user_name == u.user_name %}
+                <a href="{{ url_for('delete', username = user.user_name, number = rooms) }}">Delete the chatroom</a>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+    {% endif %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,117 @@
+/*
+  CS1520 Assignment2 Bingo Card
+  Pan Liu (pal81)
+  Due date: 10/17/2020
+*/
+
+body{
+    background-color: #d4fffb;
+    color: #156e8a;
+    font-size:20px;
+    font-weight: bold;
+}
+
+h1{
+    font-family: 'Avant Garde', sans-serif;
+    position: relative;
+    top: 20px;
+    font-size:40px;
+    color: #156e8a;
+}
+
+h2{
+    font-family: 'Avant Garde', sans-serif;
+    position: relative;
+    top: -30px;
+    font-size:90px;
+    color: #156e8a;
+}
+
+table{
+    position: relative;
+    top: -80px;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+td{
+    font-family: 'Avant Garde', sans-serif;
+    padding: 10px;
+    border:2px #93d2ed solid;
+    text-align: center;
+    height: 55px;
+    width: 77px;
+    font-size:25px;
+}
+
+.button {
+  position: relative;
+  top: -30px;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #93d2ed;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 25px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.score-board {
+  text-align: center;
+  padding: 25px;
+}
+.player {
+  color: #156e8a;
+  display: inline-block;
+  padding: 15px;
+  font-size:35px;
+}
+.player h4 {
+  color: #156e8a;
+  font-size:40px;
+  font-weight: bolder;
+  position: relative;
+  left: 600px;
+  bottom: 700px;
+}
+.score-box {
+  height: 50px;
+  width: 70px;
+  border: 5px solid #d1f5ff;
+  background-color:#d4f5ff; 
+  padding: 30px;
+  color: #156e8a;
+  position: relative;
+  left: 600px;
+  bottom: 700px;
+}
